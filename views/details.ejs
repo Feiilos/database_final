@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Lonely Bootstrap Template - Index</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,500,500i,600,600i,700,700i&subset=cyrillic" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Lonely - v2.0.0
+  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-lonely/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column align-items-center justify-content-center">
+    <h1>Hi, I'm Alice!</h1>
+    <h2>I am a graphic designer</h2>
+    <a href="#about" class="btn-get-started scrollto"><i class="icofont-simple-down"></i></a>
+  </section><!-- End Hero -->
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="/index.html"><span>About</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="http://localhost:3000/lonely">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li class="drop-down"><a href="">TKU</a>
+            <ul>
+              <li><a href="http://localhost:3000/about">About</a></li>
+              <li><a href="http://localhost:3000/admabout/_about">_About</a></li>
+              <li><a href="http://localhost:3000/testimonials">Testimonials</a></li>
+              <li><a href="http://localhost:3000/admtestimonials/_testimonials">_Testimonials</a></li>
+              <li><a href="http://localhost:3000/thought">Thought</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+
+    </div>
+  </header><!-- End Header -->
+
+    <!-- ACTIONS -->
+    <section id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a href="http://localhost:3000/admabout/_about" class="btn btn-light btn-block">
+              <i class="fas fa-arrow-left"></i> Back To _About
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a class="btn btn-success btn-block" onclick="savePost()">
+              <i class="fas fa-check"></i> Save Changes
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a class="btn btn-danger btn-block" onclick="Deletedata()">
+              <i class="fas fa-trash"></i> Delete About
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section id="details">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h4>Edit About</h4>
+              </div>
+              <div class="card-body">
+                <form id="savePost" action='/admabout/_about/update' method='post'>
+                  <div class="form-group">
+                    <label for="id">ID</label>
+                    <input
+                      type="text"
+                      name="id"
+                      class="form-control"
+                      value="<%= data[0].id %>"
+                    />
+                  </div>
+                  <input type="hidden" name="pid" value="<%= data[0].pid %>"/>                  
+                  <input type="hidden" name="cid" value="<%= data[0].cid %>"/>
+                  <div class="form-group">
+                    <label for="project">Project</label>
+                    <input
+                      type="text"
+                      name="project"
+                      class="form-control"
+                      value="<%= data[0].project %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Point">Point</label>
+                    <input
+                      type="text"
+                      name="Point"
+                      class="form-control"
+                      value="<%= data[0].Point %>"
+                    />
+                  </div>
+                  <div class="form-group">                    
+                    <label for="post">Post</label>                    
+                    <select class="form-control" name="post" id = "one">                    
+                      <% post.forEach( (p) => { %>                      
+                        <option value="<%= p.id %>"                        
+                          <%= ( p.id === data[0].pid ? 'selected' : '' ) %>                        
+                          ><%= p.title %>                      
+                        </option>                    
+                      <% }); %>                    
+                    </select>                  
+                  </div>
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" name="category">
+                    <% categories.forEach( (p) => { %>
+                      <option value="<%= p.id %>" 
+                        <%= (  p.id === data[0].cid ? 'selected' : '' ) %>
+                        ><%= p.title %>
+                      </option>
+                    <% }); %>
+                    <!-- 
+                      <option value="" selected>Web Development</option>
+                      <option value="">Tech Gadgets</option>
+                      <option value="" >Business</option>
+                      <option value="">Health & Wellness</option>
+                    -->
+                    </select>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="lead text-center">
+              Copyright &copy;
+              <span id="year"></span>
+              Blogen
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MODALS -->
+
+    <!-- ADD POST MODAL -->
+    <div class="modal fade" id="addPostModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Add Post</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control">
+                  <option value="">Web Development</option>
+                  <option value="">Tech Gadgets</option>
+                  <option value="">Business</option>
+                  <option value="">Health & Wellness</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="image">Upload Image</label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="image" />
+                  <label for="image" class="custom-file-label"
+                    >Choose File</label
+                  >
+                </div>
+                <small class="form-text text-muted">Max Size 3mb</small>
+              </div>
+              <div class="form-group">
+                <label for="body">Body</label>
+                <textarea name="editor1" class="form-control"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD CATEGORY MODAL -->
+    <div class="modal fade" id="addCategoryModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title">Add Category</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" data-dismiss="modal">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD USER MODAL -->
+    <div class="modal fade" id="addUserModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-warning text-white">
+            <h5 class="modal-title">Add User</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" class="form-control" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-warning" data-dismiss="modal">
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+    <script>
+      // Get the current year for the copyright
+      $('#year').text(new Date().getFullYear());
+
+      CKEDITOR.replace('editor1');
+
+      function savePost(){        
+        console.log("savePost"); 
+        document.getElementById('savePost').submit();      
+      }
+
+      function Deletedata(){
+        console.log("delete");
+        window.location = "/admabout/_about/delete/"+ $("input[name='id']").val();
+      }
+    </script>
+  </body>
+</html>
